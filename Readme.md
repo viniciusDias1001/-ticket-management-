@@ -154,7 +154,7 @@ O projeto já inicia com usuários pré-cadastrados via Flyway (migrations).
 
 | Perfil | Email | Senha |
 |------|------|------|
-| ADMIN | admin@local.com | Admin@123 |
+| ADMIN | vinicius@local.com | Admin@123 |
 | REVIEWER | reviewer@bbgtelecom.com | Reviewer@123 |
 
 ---
