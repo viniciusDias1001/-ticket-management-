@@ -59,6 +59,19 @@ Demonstrar conhecimentos em:
 
 ---
 
+## 📘 Documentação interativa da API (Swagger / OpenAPI)
+
+A API possui documentação automatizada e interativa via Swagger UI.
+
+Após subir o projeto, acesse:
+- Swagger UI: `http://localhost:8080/swagger-ui/index.html`
+- OpenAPI JSON: `http://localhost:8080/v3/api-docs`
+
+Para testar endpoints protegidos:
+1. Faça login em `POST /auth/login`
+2. Copie o `accessToken`
+3. Clique em **Authorize** no Swagger e cole **apenas o token** (sem escrever `Bearer`)
+
 ## 🧪 TESTES
 
 - JUnit 5 + Mockito
@@ -71,6 +84,27 @@ Demonstrar conhecimentos em:
 - Projeto configurado para **Java 21**
 
 ---
+
+### 🧪 Testes de Integração (E2E) com Testcontainers + PostgreSQL
+
+Os testes de integração rodam com **PostgreSQL real** via **Testcontainers**, validando:
+- Controllers + validações + exception handler
+- Autenticação JWT
+- Regras de permissão por perfil (CLIENT/TECH/ADMIN)
+- Persistência real com Flyway + JPA
+
+Rodar testes:
+```bash
+mvn test
+```
+Obs: é necessário ter o Docker instalado e em execução para o Testcontainers.
+
+## ⚙️ CI com GitHub Actions (build automatizado)
+
+A cada `push` ou `pull request`, o GitHub Actions executa automaticamente:
+- `mvn test`
+
+Isso garante que alterações no projeto não quebrem o build e mantém o código sempre validado.
 
 ## 🛠️ FERRAMENTAS UTILIZADAS
 
