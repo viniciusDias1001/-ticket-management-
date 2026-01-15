@@ -2,11 +2,9 @@ package viniciusDias1001.com.github.gerenciamento_de_tickets.controller;
 
 
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import viniciusDias1001.com.github.gerenciamento_de_tickets.dto.AuthResponse;
 import viniciusDias1001.com.github.gerenciamento_de_tickets.dto.LoginRequest;
 import viniciusDias1001.com.github.gerenciamento_de_tickets.dto.RegisterRequest;
@@ -23,6 +21,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AuthResponse> register(@RequestBody @Valid RegisterRequest req) {
         return ResponseEntity.ok(authService.register(req));
     }

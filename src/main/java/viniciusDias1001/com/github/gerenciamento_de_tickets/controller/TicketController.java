@@ -77,6 +77,15 @@ public class TicketController {
         return ticketService.assignTicket(requesterId(jwt), id, techId);
     }
 
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(
+            @AuthenticationPrincipal Jwt jwt,
+            @PathVariable UUID id
+    ) {status
+        UUID requesterId = UUID.fromString(jwt.getSubject());
+        ticketService.deleteTicket(requesterId, id);
+    }
     //  HISTORY AS SUBQUERY
     @GetMapping("/{id}/history")
     @ResponseStatus(HttpStatus.OK)
