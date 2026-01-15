@@ -82,7 +82,7 @@ public class TicketController {
     public void delete(
             @AuthenticationPrincipal Jwt jwt,
             @PathVariable UUID id
-    ) {status
+    ) {
         UUID requesterId = UUID.fromString(jwt.getSubject());
         ticketService.deleteTicket(requesterId, id);
     }
