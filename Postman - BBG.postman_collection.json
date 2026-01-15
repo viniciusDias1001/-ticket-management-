@@ -1,0 +1,515 @@
+{
+	"info": {
+		"_postman_id": "08409543-564e-4cdd-92a6-52a89ad12657",
+		"name": "Postman - BBG",
+		"description": "# 🚀 Get started here\n\nThis collection guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this collection**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these request types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT and PATCH requests.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a variable called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more scripts in \"Tests\" to verify if the API works as expected and execute flows.\n    \n\n## ℹ️ Resources\n\n[Building requests](https://learning.postman.com/docs/sending-requests/requests/)  \n[Authorizing requests](https://learning.postman.com/docs/sending-requests/authorization/)  \n[Using variables](https://learning.postman.com/docs/sending-requests/variables/)  \n[Managing environments](https://learning.postman.com/docs/sending-requests/managing-environments/)  \n[Writing scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23707284"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true,
+							"accept-encoding": true,
+							"connection": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Vinicius Teste\",\n  \"email\": \"pedro009@gmail.com\",\n  \"password\": \"200622Pmr@\",\n  \"role\": \"CLIENT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Auth login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"pedro0@gmail.com\",\n  \"password\": \"200622Pmr@\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "GetMy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhOTI5MmQ1OC01ZTNjLTQ4MTktYWI2Zi1mMDFkODM4Y2Y1NWQiLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3NjgzNTQ2MzIsImlhdCI6MTc2ODM1MTAzMiwiZW1haWwiOiJ2aW5pY2l1c0Bsb2NhbC5jb20ifQ.MLq9ronSWbH9uejlWaL7s8IK_gt4pp3b-b7rPOHH5Q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/myId",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"myId"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllUsersOnlyAdm",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhOTI5MmQ1OC01ZTNjLTQ4MTktYWI2Zi1mMDFkODM4Y2Y1NWQiLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3NjgzNTQ2MzIsImlhdCI6MTc2ODM1MTAzMiwiZW1haWwiOiJ2aW5pY2l1c0Bsb2NhbC5jb20ifQ.MLq9ronSWbH9uejlWaL7s8IK_gt4pp3b-b7rPOHH5Q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhOTI5MmQ1OC01ZTNjLTQ4MTktYWI2Zi1mMDFkODM4Y2Y1NWQiLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3NjgzNTQ2MzIsImlhdCI6MTc2ODM1MTAzMiwiZW1haWwiOiJ2aW5pY2l1c0Bsb2NhbC5jb20ifQ.MLq9ronSWbH9uejlWaL7s8IK_gt4pp3b-b7rPOHH5Q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/16733de2-a0ef-416b-a018-7f8d20cf8fa5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"16733de2-a0ef-416b-a018-7f8d20cf8fa5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhOTI5MmQ1OC01ZTNjLTQ4MTktYWI2Zi1mMDFkODM4Y2Y1NWQiLCJyb2xlIjoiQURNSU4iLCJleHAiOjE3NjgzNTQ2MzIsImlhdCI6MTc2ODM1MTAzMiwiZW1haWwiOiJ2aW5pY2l1c0Bsb2NhbC5jb20ifQ.MLq9ronSWbH9uejlWaL7s8IK_gt4pp3b-b7rPOHH5Q0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/3d9fda06-2bdc-4062-a684-2803543f54ac",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"3d9fda06-2bdc-4062-a684-2803543f54ac"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TICKETS",
+			"item": [
+				{
+					"name": "CreateTicket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3NDE3OWZhYi03NTk1LTQ0MDQtYTAwNS1lMGRhNmRjOTJmMzUiLCJyb2xlIjoiQ0xJRU5UIiwiZXhwIjoxNzY4MzU1NTY5LCJpYXQiOjE3NjgzNTE5NjksImVtYWlsIjoicGVkcm8wMDlAZ21haWwuY29tIn0.R66RaysFubagnB-oE_RyYYp1aTavX1_79-RSbgJh3XE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Erro ao acessar sistema\",\r\n  \"description\": \"Não consigo autenticar no app\",\r\n  \"priority\": \"HIGH\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/tickets",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTicketById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYTc5MDA2Yi1mNGMyLTQwMjItYmIyZS04ZWFiMWRmYzM1ZTEiLCJyb2xlIjoiVEVDSCIsImV4cCI6MTc2ODM1NTcyOSwiaWF0IjoxNzY4MzUyMTI5LCJlbWFpbCI6InBlZHJvMEBnbWFpbC5jb20ifQ.dM-jBLPFgXbGaZ3_SNt-fVnce5L7pWOtvOcazqs6nqQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/tickets/6e428a42-f376-470b-ad17-120a70b78191",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"6e428a42-f376-470b-ad17-120a70b78191"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllTickets",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYTc5MDA2Yi1mNGMyLTQwMjItYmIyZS04ZWFiMWRmYzM1ZTEiLCJyb2xlIjoiVEVDSCIsImV4cCI6MTc2ODM1NTcyOSwiaWF0IjoxNzY4MzUyMTI5LCJlbWFpbCI6InBlZHJvMEBnbWFpbC5jb20ifQ.dM-jBLPFgXbGaZ3_SNt-fVnce5L7pWOtvOcazqs6nqQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Erro ao acessar sistema\",\r\n  \"description\": \"Não consigo autenticar no app\",\r\n  \"priority\": \"HIGH\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/tickets",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ChangeStatusTicket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYTc5MDA2Yi1mNGMyLTQwMjItYmIyZS04ZWFiMWRmYzM1ZTEiLCJyb2xlIjoiVEVDSCIsImV4cCI6MTc2ODM1NTcyOSwiaWF0IjoxNzY4MzUyMTI5LCJlbWFpbCI6InBlZHJvMEBnbWFpbC5jb20ifQ.dM-jBLPFgXbGaZ3_SNt-fVnce5L7pWOtvOcazqs6nqQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"DONE\"\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/tickets/4a5e468b-ff53-484f-a051-1d338926d73f/status",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"4a5e468b-ff53-484f-a051-1d338926d73f",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignByTech",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYTc5MDA2Yi1mNGMyLTQwMjItYmIyZS04ZWFiMWRmYzM1ZTEiLCJyb2xlIjoiVEVDSCIsImV4cCI6MTc2ODM1NTcyOSwiaWF0IjoxNzY4MzUyMTI5LCJlbWFpbCI6InBlZHJvMEBnbWFpbC5jb20ifQ.dM-jBLPFgXbGaZ3_SNt-fVnce5L7pWOtvOcazqs6nqQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"DONE\"\r\n  \r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/tickets/6e428a42-f376-470b-ad17-120a70b78191/assign/aa79006b-f4c2-4022-bb2e-8eab1dfc35e1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"6e428a42-f376-470b-ad17-120a70b78191",
+								"assign",
+								"aa79006b-f4c2-4022-bb2e-8eab1dfc35e1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHistoryTicket",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYTc5MDA2Yi1mNGMyLTQwMjItYmIyZS04ZWFiMWRmYzM1ZTEiLCJyb2xlIjoiVEVDSCIsImV4cCI6MTc2ODM1NTcyOSwiaWF0IjoxNzY4MzUyMTI5LCJlbWFpbCI6InBlZHJvMEBnbWFpbC5jb20ifQ.dM-jBLPFgXbGaZ3_SNt-fVnce5L7pWOtvOcazqs6nqQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/tickets/fa9bf126-67a5-4b58-ac8b-74fb9462252d/history",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"fa9bf126-67a5-4b58-ac8b-74fb9462252d",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTickets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYTc5MDA2Yi1mNGMyLTQwMjItYmIyZS04ZWFiMWRmYzM1ZTEiLCJyb2xlIjoiVEVDSCIsImV4cCI6MTc2ODM1NTcyOSwiaWF0IjoxNzY4MzUyMTI5LCJlbWFpbCI6InBlZHJvMEBnbWFpbC5jb20ifQ.dM-jBLPFgXbGaZ3_SNt-fVnce5L7pWOtvOcazqs6nqQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Erro ao acessar sistema\",\r\n  \"description\": \"Não consigo autenticar no app\",\r\n  \"priority\": \"LOW\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/tickets/fa9bf126-67a5-4b58-ac8b-74fb9462252d",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"fa9bf126-67a5-4b58-ac8b-74fb9462252d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
