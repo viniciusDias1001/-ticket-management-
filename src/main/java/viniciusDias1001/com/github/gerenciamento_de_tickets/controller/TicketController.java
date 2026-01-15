@@ -1,6 +1,7 @@
 package viniciusDias1001.com.github.gerenciamento_de_tickets.controller;
 
 import jakarta.validation.Valid;
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -49,7 +50,7 @@ public class TicketController {
     public Page<TicketResponse> list(@AuthenticationPrincipal Jwt jwt,
                                      @RequestParam(required = false) TicketStatus status,
                                      @RequestParam(required = false) TicketPriority priority,
-                                     Pageable pageable) {
+                                     @ParameterObject Pageable pageable) {
         return ticketService.listTickets(requesterId(jwt), status, priority, pageable);
     }
 
@@ -86,12 +87,12 @@ public class TicketController {
         UUID requesterId = UUID.fromString(jwt.getSubject());
         ticketService.deleteTicket(requesterId, id);
     }
-    //  HISTORY AS SUBQUERY
+    //  HISTORY like a SUBQUERY
     @GetMapping("/{id}/history")
     @ResponseStatus(HttpStatus.OK)
     public Page<TicketHistoryResponse> history(@AuthenticationPrincipal Jwt jwt,
                                                @PathVariable UUID id,
-                                               Pageable pageable) {
+                                               @ParameterObject  Pageable pageable) {
         return ticketHistoryService.listByTicket(requesterId(jwt), id, pageable);
     }
 }

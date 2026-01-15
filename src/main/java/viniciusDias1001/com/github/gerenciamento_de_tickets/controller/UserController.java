@@ -1,6 +1,7 @@
 package viniciusDias1001.com.github.gerenciamento_de_tickets.controller;
 
 
+import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -38,7 +39,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public Page<UserSummaryResponse> list(@AuthenticationPrincipal Jwt jwt,
                                           @RequestParam(required = false) UserRole role,
-                                          Pageable pageable) {
+                                          @ParameterObject Pageable pageable) {
         return userService.list(requesterId(jwt), role, pageable);
     }
 
