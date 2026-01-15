@@ -166,7 +166,7 @@ O projeto já inicia com usuários pré-cadastrados via Flyway (migrations).
 - POST `/auth/login`
 
 ### 👤 Usuários
-- GET `/users/me`
+- GET `/users/myId`
 - GET `/users?role=TECH`
 
 ### 🎫 Tickets
