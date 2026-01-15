@@ -188,7 +188,7 @@ O front-end será desenvolvido em **Angular**, em um repositório separado, cons
 
 > Arquitetura baseada em microserviços, com front-end e back-end desacoplados.
 
-**Repositório do Front-end (Angular):** _(adicione aqui quando publicar)_
+**Repositório do Front-end (Angular):** _https://github.com/viniciusDias1001/gerenciamento_de_tickets-frontend_
 
 ---
 
